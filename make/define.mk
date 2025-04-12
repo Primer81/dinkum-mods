@@ -25,15 +25,16 @@ SENTINEL_TMP_DIR=$(SENTINEL_DIR)/tmp
 SENTINEL_EXT=.sentinel
 
 ###############################################################################
-# Dotnet vsmod
+# Dotnet bepinex
 ###############################################################################
-## Configuration
+## Configuration (reference: https://github.com/BepInEx/BepInEx.Templates/blob/master/README.md)
 export DOTNET?=dotnet
-export DOTNET_VSMOD_PACKAGE_NAME?=VintageStory.Mod.Templates
+export DOTNET_BEPINEX_SOURCE?=https://nuget.bepinex.dev/v3/index.json
+export DOTNET_BEPINEX_PACKAGE_NAME?=BepInEx.Templates
 ## Definitions
-DOTNET_VSMOD=$(DOTNET) new vsmod
-DOTNET_VSMOD_INSTALL_SENTINEL=\
-    $(SENTINEL_TMP_DIR)/dotnet-vsmod-install$(SENTINEL_EXT)
+DOTNET_BEPINEX=$(DOTNET) new bepinex5plugin
+DOTNET_BEPINEX_INSTALL_SENTINEL=\
+    $(SENTINEL_TMP_DIR)/dotnet-bepinex-install$(SENTINEL_EXT)
 
 ###############################################################################
 # Dotnet ilspycmd
@@ -42,15 +43,8 @@ DOTNET_VSMOD_INSTALL_SENTINEL=\
 export DOTNET_ILSPYCMD_PACKAGE_NAME?=ilspycmd
 export DOTNET_ILSPYCMD_PACKAGE_VERSION?=8.2
 export DOTNET_ILSPYCMD_TARGETS?=\
-	$(VINTAGE_STORY)/VintagestoryAPI.dll\
-	$(VINTAGE_STORY)/VintagestoryLib.dll\
-	$(VINTAGE_STORY)/Mods/VSEssentials.dll\
-	$(VINTAGE_STORY)/Mods/VSSurvivalMod.dll\
-	$(VINTAGE_STORY)/Mods/VSCreativeMod.dll
-export DOTNET_ILSPYCMD_REFERENCES?=\
-	$(VINTAGE_STORY)\
-	$(VINTAGE_STORY)/Mods\
-	$(VINTAGE_STORY)/Lib
+    "$(DINKUM_INSTALL)/Dinkum_Data/Managed/Assembly-CSharp.dll"
+export DOTNET_ILSPYCMD_REFERENCES?=
 export DOTNET_ILSPYCMD_VSVERSION?=new
 ## Definitions
 ### Commands
@@ -61,7 +55,7 @@ DOTNET_ILSPYCMD_INSTALL_SENTINEL=\
 DOTNET_ILSPYCMD_OUTPUT_DIR=references/$(DOTNET_ILSPYCMD_VSVERSION)/DecompiledSource
 ### Recipes
 DOTNET_ILSPYCMD_DECOMPILE_PREREQUISITES=\
-	| $(DOTNET_ILSPYCMD_INSTALL_SENTINEL)
+    | $(DOTNET_ILSPYCMD_INSTALL_SENTINEL)
 
 ###############################################################################
 # Project
@@ -110,7 +104,7 @@ PROJECT_MOD_ICON=$(PROJECT_SRC_DIR)/modicon.png
 PROJECT_CREATE_SENTINEL=\
     $(SENTINEL_DIR)/project-create-$(PROJECT_NAME)$(SENTINEL_EXT)
 PROJECT_CREATE_PREREQUISITES=\
-    | $(DOTNET_VSMOD_INSTALL_SENTINEL)
+    | $(DOTNET_BEPINEX_INSTALL_SENTINEL)
 #### Build
 PROJECT_BUILD_ALL_PREREQUISITES=\
     project-target-cake-all\

@@ -6,7 +6,7 @@ project-create-all: $(PROJECT_CREATE_SENTINEL)
 $(PROJECT_CREATE_SENTINEL): $(PROJECT_CREATE_PREREQUISITES)
 	$(shell mkdir -p $(dir $@))
 	$(shell mkdir -p $(dir $(PROJECT_MOD_ICON)))
-	$(DOTNET_VSMOD) \
+	$(DOTNET_BEPINEX) \
 		--AddSolutionFile \
 		--IncludeVSCode \
 		--AddSampleCode \
@@ -17,11 +17,8 @@ $(PROJECT_CREATE_SENTINEL): $(PROJECT_CREATE_PREREQUISITES)
 		--IncludeSQLite \
 		--IncludeVintagestoryLib \
 		--output $(PROJECT_DIR) \
-		--name $(PROJECT_NAME)
-	dotnet add $(PROJECT_CSPROJ_FILE) \
-		package System.Collections.Immutable --version 8.0.0
-	dotnet add $(PROJECT_CSPROJ_FILE) \
-		package System.Text.Json --version 8.0.0
+		--name $(PROJECT_NAME) \
+		--dry-run
 	cp $(PROJECT_MOD_ICON_DEFAULT) $(PROJECT_MOD_ICON)
 	touch $@
 
