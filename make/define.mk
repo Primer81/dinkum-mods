@@ -39,23 +39,39 @@ DOTNET_BEPINEX_INSTALL_SENTINEL=\
 ###############################################################################
 # Dotnet ilspycmd
 ###############################################################################
-## Configuration
-export DOTNET_ILSPYCMD_PACKAGE_NAME?=ilspycmd
-export DOTNET_ILSPYCMD_PACKAGE_VERSION?=8.2
-export DOTNET_ILSPYCMD_TARGETS?=\
-    "$(DINKUM_INSTALL)/Dinkum_Data/Managed/Assembly-CSharp.dll"
-export DOTNET_ILSPYCMD_REFERENCES?=
-export DOTNET_ILSPYCMD_VSVERSION?=new
+## Functions
+ilspycmd_add_dll=\
+    $(eval DOTNET_ILSPYCMD_TARGETS+="$(1)")\
+    $(eval DOTNET_ILSPYCMD_TARGETS_INDEX+=\
+        $(shell echo $$(( $(words $(DOTNET_ILSPYCMD_TARGETS_INDEX)) + $(words $(1)) ))))
 ## Definitions
+### Targets
+DOTNET_ILSPYCMD_TARGETS=
+DOTNET_ILSPYCMD_TARGETS_INDEX=
+$(call ilspycmd_add_dll,$(DINKUM_INSTALL)/Dinkum_Data/Managed/Assembly-CSharp.dll)
 ### Commands
 DOTNET_ILSPYCMD=ilspycmd
 DOTNET_ILSPYCMD_INSTALL_SENTINEL=\
     $(SENTINEL_TMP_DIR)/dotnet-ilspycmd-install$(SENTINEL_EXT)
 ### Directories
-DOTNET_ILSPYCMD_OUTPUT_DIR=references/$(DOTNET_ILSPYCMD_VSVERSION)/DecompiledSource
+DOTNET_ILSPYCMD_OUTPUT_DIR=references/$(DOTNET_ILSPYCMD_OUTPUT_VERSION)/DecompiledSource
 ### Recipes
 DOTNET_ILSPYCMD_DECOMPILE_PREREQUISITES=\
     | $(DOTNET_ILSPYCMD_INSTALL_SENTINEL)
+## Configuration
+export DOTNET_ILSPYCMD_PACKAGE_NAME?=ilspycmd
+export DOTNET_ILSPYCMD_PACKAGE_VERSION?=8.2
+export DOTNET_ILSPYCMD_REFERENCES?=
+export DOTNET_ILSPYCMD_OUTPUT_VERSION?=new
+export DOTNET_ILSPYCMD_FLAGS?=\
+    --project\
+    --disable-updatecheck\
+    --nested-directories\
+    --use-varnames-from-pdb\
+    $(foreach ref,$(DOTNET_ILSPYCMD_REFERENCES),\
+        -r $(ref)\
+    )\
+    -o $(DOTNET_ILSPYCMD_OUTPUT_DIR)
 
 ###############################################################################
 # Project
