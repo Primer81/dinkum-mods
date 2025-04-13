@@ -10,6 +10,10 @@ endef
 # Common Functions
 ###############################################################################
 read_json=$(shell python -c "import json; print(json.load(open('$(1)'))['$(2)'])" 2>/dev/null)
+read_xml=$(shell python -c "import xml.etree.ElementTree as ET; print(elem.text ET.parse('$(1)').getroot().find('.//$(2)').text)" 2>/dev/null)
+define zip
+    python -c "import shutil; shutil.make_archive('$(if $(2),$(2),$(basename $(1)))', 'zip', '$(1)')"
+endef
 lowercase=$(shell echo $(1) | tr A-Z a-z)
 
 ###############################################################################
@@ -30,6 +34,10 @@ SENTINEL_EXT=.sentinel
 ###############################################################################
 ## Configuration
 export DOTNET?=dotnet
+export DOTNET_BUILD?=dotnet build
+export DOTNET_CLEAN?=dotnet clean
+export DOTNET_RUN?=dotnet run
+export DOTNET_PUBLISH?=dotnet publish
 
 ###############################################################################
 # Dotnet vsmod
@@ -96,10 +104,10 @@ export DOTNET_ILSPYCMD_FLAGS?=\
 SRC_DIR=src
 ## Templates
 TEMPLATE_DIR=template
-TEMPLATE_CAKE=$(TEMPLATE_DIR)/CakeBuild
 TEMPLATE_GIT_IGNORE=$(TEMPLATE_DIR)/.gitignore
 TEMPLATE_MOD_INFO_JSON=$(TEMPLATE_DIR)/modinfo.json
 TEMPLATE_MOD_SOLUTION_FILE=$(TEMPLATE_DIR)/template-solution-file.sln
+TEMPLATE_ASSETS=$(TEMPLATE_DIR)/assets
 ## Configuration
 ifndef name
     ### Defaults
@@ -115,11 +123,6 @@ endif
 #### Common
 PROJECT_DIR=$(SRC_DIR)/$(PROJECT_NAME)
 PROJECT_RELEASES_DIR=$(PROJECT_DIR)/Releases
-#### Cake
-PROJECT_CAKE_SRC_DIR=$(PROJECT_DIR)/CakeBuild
-PROJECT_CAKE_BUILD_DIR=\
-    $(PROJECT_CAKE_BIN_DIR)/$(PROJECT_BUILD_PROFILE)/net7.0
-PROJECT_CAKE_CSPROJ_FILE=$(PROJECT_SRC_DIR)/CakeBuild.csproj
 #### Mod
 PROJECT_SRC_DIR=$(PROJECT_DIR)/$(PROJECT_NAME)
 PROJECT_BUILD_DIR=\
@@ -127,7 +130,8 @@ PROJECT_BUILD_DIR=\
 PROJECT_CSPROJ_FILE=$(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj
 ### Version
 PROJECT_MODID=$(call lowercase,$(PROJECT_NAME))
-PROJECT_VERSION=$(call read_json,$(PROJECT_SRC_DIR)/modinfo.json,version)
+PROJECT_DESCRIPTION=$(call read_xml,$(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj,Description)
+PROJECT_VERSION=$(call read_xml,$(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj,Version)
 ifeq ($(PROJECT_VERSION),)
     PROJECT_VERSION=1.0.0
 endif
@@ -142,11 +146,9 @@ PROJECT_CREATE_PREREQUISITES=\
     | $(DOTNET_BEPINEX_INSTALL_SENTINEL)
 #### Build
 PROJECT_BUILD_ALL_PREREQUISITES=\
-    project-target-cake-all\
     project-target-mod-all\
     project-target-release-all
 PROJECT_BUILD_CLEAN_PREREQUISITES=\
-    project-target-cake-clean\
     project-target-mod-clean\
     project-target-release-clean
 #### Install

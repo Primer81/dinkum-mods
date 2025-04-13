@@ -15,9 +15,9 @@
 Basic `make` commands are defined under `make/default.mk`. Each can be made
 to apply to a specific set of projects by adding `PROJECT_NAME_LIST=<names...>`
 before the command. These include:
-- `all`: Builds everything using `dotnet` and Cake for debug and release.
-- `clean`: Cleans everything using `dotnet` for debug and release.
-- `rebuild`: Rebuilds everything using `dotnet` and Cake for debug and release.
+- `all`: Builds debug and release configurations.
+- `clean`: Cleans debug and release configurations.
+- `rebuild`: Rebuilds debug and release configurations.
 - `install`: Installs the release build into the active Dinkum
 installation (WIP).
 - `uninstall`: Uninstalls the release build from the active Dinkum
@@ -36,7 +36,7 @@ If any of the specified project names do not yet exist, they will be created
 automatically under the `src` directory.
 
 Other basic `make` commands include:
-- `decompile`: Decompiles the active dinkum installation DLL's into the
+- `decompile`: Decompiles the active Dinkum installation DLL's into the
 `references/new` directory using `ilspycmd`.
 
 Advanced project commands are defined under `make/project.mk`. The basic

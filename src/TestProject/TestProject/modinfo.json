@@ -1,7 +1,7 @@
 {
     "type": "code",
-    "modid": "[{ProjectModId}]",
-    "name": "[{ProjectName}]",
+    "modid": "testproject",
+    "name": "TestProject",
     "authors": [
         "Primer81"
     ],

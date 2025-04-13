@@ -8,17 +8,17 @@ $(PROJECT_CREATE_SENTINEL): $(PROJECT_CREATE_PREREQUISITES)
 	$(shell mkdir -p $(dir $(PROJECT_MOD_ICON)))
 	$(eval $@_TemplateProjectName="\[{ProjectName}\]")
 	$(eval $@_ActualProjectName="$(PROJECT_NAME)")
-	$(eval $@_TemplateModId="\[{ModId}\]")
+	$(eval $@_TemplateModId="\[{ProjectModId}\]")
 	$(eval $@_ActualModId="$(PROJECT_MODID)")
 	$(DOTNET_BEPINEX) \
 		--output $(PROJECT_DIR)/$(PROJECT_NAME) \
 		--name $(PROJECT_NAME)
-	cp -r $(TEMPLATE_CAKE) $(PROJECT_DIR)
 	sed -i 's|$($@_TemplateProjectName)|$($@_ActualProjectName)|g' $(PROJECT_DIR)/$(notdir $(TEMPLATE_CAKE))/Program.cs
 	cp $(TEMPLATE_MOD_SOLUTION_FILE) $(PROJECT_DIR)/$(PROJECT_NAME).sln
 	$(DOTNET) sln $(PROJECT_DIR)/$(PROJECT_NAME).sln \
 		add $(PROJECT_DIR)/$(PROJECT_NAME)/$(PROJECT_NAME).csproj
-	cp $(TEMPLATE_MOD_INFO_JSON) $(PROJECT_DIR)/$(PROJECT_NAME)
+	cp $(TEMPLATE_MOD_INFO_JSON) $(PROJECT_SRC_DIR)
+	cp -r $(TEMPLATE_ASSETS) $(PROJECT_SRC_DIR)
 	sed -i 's|$($@_TemplateProjectName)|$($@_ActualProjectName)|g' $(PROJECT_DIR)/$(PROJECT_NAME)/$(notdir $(TEMPLATE_MOD_INFO_JSON))
 	sed -i 's|$($@_TemplateModId)|$($@_ActualModId)|g' $(PROJECT_DIR)/$(PROJECT_NAME)/$(notdir $(TEMPLATE_MOD_INFO_JSON))
 	cp $(TEMPLATE_GIT_IGNORE) $(PROJECT_DIR)
@@ -74,30 +74,52 @@ project-run-client: $(PROJECT_RUN_PREREQUISITES)
 ###############################################################################
 # Targets
 ###############################################################################
-## Cake
-.PHONY: project-target-cake-all
-project-target-cake-all: $(PROJECT_TARGET_PREREQUISITES)
-	$(DOTNET) build -c Debug $(PROJECT_CAKE_SRC_DIR)/CakeBuild.csproj
-
-.PHONY: project-target-cake-clean
-project-target-cake-clean:
-	$(DOTNET) clean -c Debug $(PROJECT_CAKE_SRC_DIR)/CakeBuild.csproj
-
 ## Mod
 .PHONY: project-target-mod-all
 project-target-mod-all: $(PROJECT_TARGET_PREREQUISITES)
-	$(DOTNET) build -c Debug $(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj
+	$(DOTNET_BUILD) -c Debug $(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj
 
 .PHONY: project-target-mod-clean
 project-target-mod-clean:
-	$(DOTNET) clean -c Debug $(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj
+	$(DOTNET_CLEAN) -c Debug $(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj
+
+.PHONY: project-target-mod-rebuild
+project-target-mod-rebuild:
+	$(MAKE) project-target-mod-clean
+	$(MAKE) project-target-mod-all
 
 ## Release
 .PHONY: project-target-release-all
 project-target-release-all: $(PROJECT_TARGET_PREREQUISITES)
-	$(DOTNET) run --project $(PROJECT_CAKE_SRC_DIR)/CakeBuild.csproj
+	$(eval $@_TemplateProjectName="\[{ProjectName}\]")
+	$(eval $@_ActualProjectName="$(PROJECT_NAME)")
+	$(eval $@_TemplateDescription="\[{ProjectDescription}\]")
+	$(eval $@_ActualDescription="$(PROJECT_DESCRIPTION)")
+	$(eval $@_TemplateVersion="\[{ProjectVersion}\]")
+	$(eval $@_ActualVersion="$(PROJECT_VERSION)")
+	$(eval $@_TemplateModId="\[{ProjectModId}\]")
+	$(eval $@_ActualModId="$(PROJECT_MODID)")
+	rm -rf $(PROJECT_RELEASES_DIR)
+	mkdir -p $(PROJECT_RELEASES_DIR)/$(PROJECT_MODID)
+	$(DOTNET_CLEAN) -c Release $(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj
+	$(DOTNET_BUILD) -c Release $(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj
+	$(DOTNET_PUBLISH) -c Release $(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj
+	cp -r $(PROJECT_SRC_DIR)/bin/Release/net35/publish/* $(PROJECT_RELEASES_DIR)/$(PROJECT_MODID)
+	$(if $(wildcard $(PROJECT_SRC_DIR)/assets),cp -r $(PROJECT_SRC_DIR)/assets $(PROJECT_RELEASES_DIR)/$(PROJECT_MODID),)
+	$(if $(wildcard $(PROJECT_SRC_DIR)/modicon.png),cp $(PROJECT_SRC_DIR)/modicon.png $(PROJECT_RELEASES_DIR)/$(PROJECT_MODID),)
+	cp $(TEMPLATE_MOD_INFO_JSON) $(PROJECT_RELEASES_DIR)/$(PROJECT_MODID)
+	sed -i 's|$($@_TemplateProjectName)|$($@_ActualProjectName)|g' $(PROJECT_RELEASES_DIR)/$(PROJECT_MODID)/$(notdir $(TEMPLATE_MOD_INFO_JSON))
+	sed -i 's|$($@_TemplateDescription)|$($@_ActualDescription)|g' $(PROJECT_RELEASES_DIR)/$(PROJECT_MODID)/$(notdir $(TEMPLATE_MOD_INFO_JSON))
+	sed -i 's|$($@_TemplateVersion)|$($@_ActualVersion)|g' $(PROJECT_RELEASES_DIR)/$(PROJECT_MODID)/$(notdir $(TEMPLATE_MOD_INFO_JSON))
+	sed -i 's|$($@_TemplateModId)|$($@_ActualModId)|g' $(PROJECT_RELEASES_DIR)/$(PROJECT_MODID)/$(notdir $(TEMPLATE_MOD_INFO_JSON))
+	$(call zip,$(PROJECT_RELEASES_DIR)/$(PROJECT_MODID),$(PROJECT_RELEASES_DIR)/$(PROJECT_MODID)_$(PROJECT_VERSION))
 
 .PHONY: project-target-release-clean
 project-target-release-clean:
-	$(DOTNET) clean -c Release $(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj
+	$(DOTNET_CLEAN) -c Release $(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj
 	rm -drf $(PROJECT_RELEASES_DIR)
+
+.PHONY: project-target-release-rebuild
+project-target-release-rebuild:
+	$(MAKE) project-target-release-clean
+	$(MAKE) project-target-release-all
