@@ -26,3 +26,6 @@ dotnet-bepinex-update:
 	$(MAKE) dotnet-bepinex-uninstall
 	$(MAKE) dotnet-bepinex-install
 
+.PHONY: dotnet-bepinex-debug-enable
+dotnet-bepinex-debug-enable:
+	python

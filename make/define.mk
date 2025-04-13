@@ -10,6 +10,7 @@ endef
 # Common Functions
 ###############################################################################
 read_json=$(shell python -c "import json; print(json.load(open('$(1)'))['$(2)'])" 2>/dev/null)
+lowercase=$(shell echo $(1) | tr A-Z a-z)
 
 ###############################################################################
 # Images
@@ -25,10 +26,25 @@ SENTINEL_TMP_DIR=$(SENTINEL_DIR)/tmp
 SENTINEL_EXT=.sentinel
 
 ###############################################################################
+# Dotnet
+###############################################################################
+## Configuration
+export DOTNET?=dotnet
+
+###############################################################################
+# Dotnet vsmod
+###############################################################################
+## Configuration
+export DOTNET_VSMOD_PACKAGE_NAME?=VintageStory.Mod.Templates
+## Definitions
+DOTNET_VSMOD=$(DOTNET) new vsmod
+DOTNET_VSMOD_INSTALL_SENTINEL=\
+    $(SENTINEL_TMP_DIR)/dotnet-vsmod-install$(SENTINEL_EXT)
+
+###############################################################################
 # Dotnet bepinex
 ###############################################################################
 ## Configuration (reference: https://github.com/BepInEx/BepInEx.Templates/blob/master/README.md)
-export DOTNET?=dotnet
 export DOTNET_BEPINEX_SOURCE?=https://nuget.bepinex.dev/v3/index.json
 export DOTNET_BEPINEX_PACKAGE_NAME?=BepInEx.Templates
 ## Definitions
@@ -78,6 +94,12 @@ export DOTNET_ILSPYCMD_FLAGS?=\
 ###############################################################################
 ## Sources
 SRC_DIR=src
+## Templates
+TEMPLATE_DIR=template
+TEMPLATE_CAKE=$(TEMPLATE_DIR)/CakeBuild
+TEMPLATE_GIT_IGNORE=$(TEMPLATE_DIR)/.gitignore
+TEMPLATE_MOD_INFO_JSON=$(TEMPLATE_DIR)/modinfo.json
+TEMPLATE_MOD_SOLUTION_FILE=$(TEMPLATE_DIR)/template-solution-file.sln
 ## Configuration
 ifndef name
     ### Defaults
@@ -104,13 +126,10 @@ PROJECT_BUILD_DIR=\
     $(PROJECT_SRC_DIR)/bin/$(PROJECT_BUILD_PROFILE)/Mods/mod
 PROJECT_CSPROJ_FILE=$(PROJECT_SRC_DIR)/$(PROJECT_NAME).csproj
 ### Version
+PROJECT_MODID=$(call lowercase,$(PROJECT_NAME))
 PROJECT_VERSION=$(call read_json,$(PROJECT_SRC_DIR)/modinfo.json,version)
-PROJECT_MODID=$(call read_json,$(PROJECT_SRC_DIR)/modinfo.json,modid)
 ifeq ($(PROJECT_VERSION),)
     PROJECT_VERSION=1.0.0
-endif
-ifeq ($(PROJECT_MODID),)
-    PROJECT_MODID=unknown
 endif
 ### Icon
 PROJECT_MOD_ICON_DEFAULT=$(IMG_PROFILE_PICTURE)

@@ -6,19 +6,22 @@ project-create-all: $(PROJECT_CREATE_SENTINEL)
 $(PROJECT_CREATE_SENTINEL): $(PROJECT_CREATE_PREREQUISITES)
 	$(shell mkdir -p $(dir $@))
 	$(shell mkdir -p $(dir $(PROJECT_MOD_ICON)))
+	$(eval $@_TemplateProjectName="\[{ProjectName}\]")
+	$(eval $@_ActualProjectName="$(PROJECT_NAME)")
+	$(eval $@_TemplateModId="\[{ModId}\]")
+	$(eval $@_ActualModId="$(PROJECT_MODID)")
 	$(DOTNET_BEPINEX) \
-		--AddSolutionFile \
-		--IncludeVSCode \
-		--AddSampleCode \
-		--AddAssetFolder \
-		--IncludeHarmony \
-		--IncludeProtobuf \
-		--IncludeCairoSharp \
-		--IncludeSQLite \
-		--IncludeVintagestoryLib \
-		--output $(PROJECT_DIR) \
-		--name $(PROJECT_NAME) \
-		--dry-run
+		--output $(PROJECT_DIR)/$(PROJECT_NAME) \
+		--name $(PROJECT_NAME)
+	cp -r $(TEMPLATE_CAKE) $(PROJECT_DIR)
+	sed -i 's|$($@_TemplateProjectName)|$($@_ActualProjectName)|g' $(PROJECT_DIR)/$(notdir $(TEMPLATE_CAKE))/Program.cs
+	cp $(TEMPLATE_MOD_SOLUTION_FILE) $(PROJECT_DIR)/$(PROJECT_NAME).sln
+	$(DOTNET) sln $(PROJECT_DIR)/$(PROJECT_NAME).sln \
+		add $(PROJECT_DIR)/$(PROJECT_NAME)/$(PROJECT_NAME).csproj
+	cp $(TEMPLATE_MOD_INFO_JSON) $(PROJECT_DIR)/$(PROJECT_NAME)
+	sed -i 's|$($@_TemplateProjectName)|$($@_ActualProjectName)|g' $(PROJECT_DIR)/$(PROJECT_NAME)/$(notdir $(TEMPLATE_MOD_INFO_JSON))
+	sed -i 's|$($@_TemplateModId)|$($@_ActualModId)|g' $(PROJECT_DIR)/$(PROJECT_NAME)/$(notdir $(TEMPLATE_MOD_INFO_JSON))
+	cp $(TEMPLATE_GIT_IGNORE) $(PROJECT_DIR)
 	cp $(PROJECT_MOD_ICON_DEFAULT) $(PROJECT_MOD_ICON)
 	touch $@
 
@@ -26,6 +29,11 @@ $(PROJECT_CREATE_SENTINEL): $(PROJECT_CREATE_PREREQUISITES)
 project-create-clean:
 	rm -drf $(PROJECT_DIR)
 	rm -f $(PROJECT_CREATE_SENTINEL)
+
+.PHONY: project-create-rebuild
+project-create-rebuild:
+	$(MAKE) project-create-clean
+	$(MAKE) project-create-all
 
 ###############################################################################
 # Build
@@ -57,11 +65,11 @@ project-run-client: $(PROJECT_RUN_PREREQUISITES)
 		--addModPath $(abspath $(PROJECT_SRC_DIR)/bin/Debug/Mods) \
 		--openWorld "TestWorld"
 
-.PHONY: project-run-server
-project-run-server: $(PROJECT_RUN_PREREQUISITES)
-	"$(VINTAGE_STORY)/VintagestoryServer" \
-		--tracelog \
-		--addModPath $(abspath $(PROJECT_SRC_DIR)/bin/Debug/Mods)
+# .PHONY: project-run-server
+# project-run-server: $(PROJECT_RUN_PREREQUISITES)
+# 	"$(VINTAGE_STORY)/VintagestoryServer" \
+# 		--tracelog \
+# 		--addModPath $(abspath $(PROJECT_SRC_DIR)/bin/Debug/Mods)
 
 ###############################################################################
 # Targets
