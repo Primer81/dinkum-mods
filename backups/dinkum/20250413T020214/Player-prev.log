@@ -1,0 +1,58 @@
+Mono path[0] = 'C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Managed'
+Mono config path = 'C:/Program Files (x86)/Steam/steamapps/common/Dinkum/MonoBleedingEdge/etc'
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/lib/usr/lib/libSystem.dylib
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/lib/usr/lib/libSystem.dylib.dll
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/lib/usr/lib/libSystem.dylib
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/libc.so.6
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/libc.so.6.dll
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/libc.so.6
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/data-0000023FF0418F00.dll
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/data-0000023FF4974040.dll
+Initialize engine version: 2020.3.48f1 (b805b124c6b7)
+[Subsystems] Discovering subsystems at path C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1660 Ti (ID=0x2182)
+    Vendor:   
+    VRAM:     5966 MB
+    Driver:   32.0.15.6094
+Begin MonoManager ReloadAssembly
+- Completed reload, in  0.092 seconds
+[Message: Preloader] BepInEx 6.0.0-pre.1 - Dinkum
+[Info   :   BepInEx] System platform: Windows 10 64-bit
+[Info   :   BepInEx] Process bitness: 64-bit (x64)
+[Info   : Preloader] Running under Unity v2020.3.48.12060081
+[Info   : Preloader] CLR runtime version: 4.0.30319.42000
+[Info   : Preloader] Supports SRE: True
+[Message: Preloader] Preloader started
+[Info   :AssemblyPatcher] Loaded 1 patcher type from [BepInEx.Preloader.Unity 6.0.0.0]
+[Info   : Preloader] 1 patcher plugin loaded
+[Info   : Preloader] 100 assemblies discovered
+[Message:AssemblyPatcher] Executing 1 patch(es)
+[Message: Preloader] Preloader finished
+[Message:   BepInEx] Chainloader initialized
+[Info   :   BepInEx] 0 plugins to load
+[Message:   BepInEx] Chainloader startup complete
+<RI> Initializing input.
+New input system (experimental) initialized
+Using XInput
+<RI> Input initialized.
+<RI> Initialized touch support.
+Couldn't create a Convex Mesh from source mesh "SnowBall_Half" within the maximum polygons limit (256). The partial hull will be used. Consider simplifying your mesh.
+Couldn't create a Convex Mesh from source mesh "SnowBall_OtherHalf" within the maximum polygons limit (256). The partial hull will be used. Consider simplifying your mesh.
+UnloadTime: 7.232200 ms
+FOUND BEPINEX
+FOUND BEPINEX
+FOUND BEPINEX
+FOUND BEPINEX
+STEAM - Leaving lobby 0
+STEAM - Disconnected
+Setting up 6 worker threads for Enlighten.
+  Thread -> id: 7918 -> priority: 1 
+  Thread -> id: 7d54 -> priority: 1 
+  Thread -> id: 8350 -> priority: 1 
+  Thread -> id: e88 -> priority: 1 
+  Thread -> id: 293c -> priority: 1 
+  Thread -> id: 1e68 -> priority: 1 
+Coroutine 'cameraStop' couldn't be started because the the game object 'CameraContainer' is inactive!

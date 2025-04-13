@@ -1,0 +1,304 @@
+Mono path[0] = 'C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Managed'
+Mono config path = 'C:/Program Files (x86)/Steam/steamapps/common/Dinkum/MonoBleedingEdge/etc'
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/lib/usr/lib/libSystem.dylib
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/lib/usr/lib/libSystem.dylib.dll
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/lib/usr/lib/libSystem.dylib
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/libc.so.6
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/libc.so.6.dll
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/libc.so.6
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/data-000002667C2F00B0.dll
+Fallback handler could not load library C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/Mono/data-000002667FCBD040.dll
+Initialize engine version: 2020.3.48f1 (b805b124c6b7)
+[Subsystems] Discovering subsystems at path C:/Program Files (x86)/Steam/steamapps/common/Dinkum/Dinkum_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1660 Ti (ID=0x2182)
+    Vendor:   
+    VRAM:     5966 MB
+    Driver:   32.0.15.6094
+Begin MonoManager ReloadAssembly
+- Completed reload, in  0.197 seconds
+[Message: Preloader] BepInEx 6.0.0-pre.1 - Dinkum
+[Info   :   BepInEx] System platform: Windows 10 64-bit
+[Info   :   BepInEx] Process bitness: 64-bit (x64)
+[Info   : Preloader] Running under Unity v2020.3.48.12060081
+[Info   : Preloader] CLR runtime version: 4.0.30319.42000
+[Info   : Preloader] Supports SRE: True
+[Message: Preloader] Preloader started
+[Info   :AssemblyPatcher] Loaded 1 patcher type from [BepInEx.Preloader.Unity 6.0.0.0]
+[Info   : Preloader] 1 patcher plugin loaded
+[Info   : Preloader] 100 assemblies discovered
+[Message:AssemblyPatcher] Executing 1 patch(es)
+[Message: Preloader] Preloader finished
+[Message:   BepInEx] Chainloader initialized
+[Info   :   BepInEx] 0 plugins to load
+[Message:   BepInEx] Chainloader startup complete
+<RI> Initializing input.
+New input system (experimental) initialized
+Using XInput
+<RI> Input initialized.
+<RI> Initialized touch support.
+Couldn't create a Convex Mesh from source mesh "SnowBall_Half" within the maximum polygons limit (256). The partial hull will be used. Consider simplifying your mesh.
+Couldn't create a Convex Mesh from source mesh "SnowBall_OtherHalf" within the maximum polygons limit (256). The partial hull will be used. Consider simplifying your mesh.
+UnloadTime: 7.061300 ms
+FOUND BEPINEX
+FOUND BEPINEX
+FOUND BEPINEX
+FOUND BEPINEX
+STEAM - Joining LobbyID 109775244296023911
+STEAM - Leaving Previous lobby
+STEAM - Leaving lobby 0
+STEAM - Disconnected
+STEAM - OnLobbyEntered
+Starting client [SteamSockets], target address 76561198237325968.
+Connection state changed: k_ESteamNetworkingConnectionState_Connecting - 
+Connection state changed: k_ESteamNetworkingConnectionState_FindingRoute - 
+Connection established.
+Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (VoiceChatSource).
+Only custom filters can be played. Please add a custom filter or an audioclip to the audiosource (VoiceChatSource).
+OnDeserialize failed Exception=System.NullReferenceException (see below) object=15 SnowBall(Clone) component=PickUpAndCarry sceneId=0 length=6. Possible Reasons:
+  * Do PickUpAndCarry's OnSerialize and OnDeserialize calls write the same amount of data(6 bytes)? 
+  * Was there an exception in PickUpAndCarry's OnSerialize/OnDeserialize code?
+  * Are the server and client the exact same project?
+  * Maybe this OnDeserialize call was meant for another GameObject? The sceneIds can easily get out of sync if the Hierarchy was modified only in the client OR the server. Try rebuilding both.
+
+Exception System.NullReferenceException: Object reference not set to an instance of an object
+  at PickUpAndCarry.OnCarriedChanged (System.UInt32 old, System.UInt32 newCarriedBy) [0x00076] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at PickUpAndCarry.DeserializeSyncVars (Mirror.NetworkReader reader, System.Boolean initialState) [0x00039] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at Mirror.NetworkBehaviour.OnDeserialize (Mirror.NetworkReader reader, System.Boolean initialState) [0x00013] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at Mirror.NetworkIdentity.OnDeserializeSafely (Mirror.NetworkBehaviour comp, Mirror.NetworkReader reader, System.Boolean initialState) [0x00017] in <6edfdef5cb534c349fa980cc98590311>:0 
+OnDeserialize was expected to read 6 instead of 4 bytes for object:15 SnowBall(Clone) component=PickUpAndCarry sceneId=0. Make sure that OnSerialize and OnDeserialize write/read the same amount of data in all cases.
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Can not play a disabled audio source
+Joystick connected ("Xbox Bluetooth Gamepad").
+C:/Users/gwlar/AppData/LocalLow/James Bendon/Dinkum\Slot0/SaveIcon.png
+C:/Users/gwlar/AppData/LocalLow/James Bendon/Dinkum\Slot0/SaveIcon.png
+Calling whistle
+C:/Users/gwlar/AppData/LocalLow/James Bendon/Dinkum\Slot0/SaveIcon.png
+Calling whistle
+Calling whistle
+C:/Users/gwlar/AppData/LocalLow/James Bendon/Dinkum\Slot0/SaveIcon.png
+C:/Users/gwlar/AppData/LocalLow/James Bendon/Dinkum\Slot0/SaveIcon.png
+NullReferenceException: Object reference not set to an instance of an object
+  at TileObject.damage (System.Boolean damageWithSound, System.Boolean damageParticleOn) [0x0001f] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at WobbleWhenTouched.OnTriggerEnter (UnityEngine.Collider other) [0x0006b] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at TileObject.damage (System.Boolean damageWithSound, System.Boolean damageParticleOn) [0x0001f] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at WobbleWhenTouched.OnTriggerEnter (UnityEngine.Collider other) [0x0006b] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at TileObject.damage (System.Boolean damageWithSound, System.Boolean damageParticleOn) [0x0001f] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at WobbleWhenTouched.OnTriggerEnter (UnityEngine.Collider other) [0x0006b] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+
+C:/Users/gwlar/AppData/LocalLow/James Bendon/Dinkum\Slot0/SaveIcon.png
+C:/Users/gwlar/AppData/LocalLow/James Bendon/Dinkum\Slot0/SaveIcon.png
+C:/Users/gwlar/AppData/LocalLow/James Bendon/Dinkum\Slot0/SaveIcon.png
+C:/Users/gwlar/AppData/LocalLow/James Bendon/Dinkum\Slot0/SaveIcon.png
+Position 6, 9 inside house 585, 369 had its status changed to 1
+Position 6, 9 inside house 585, 369 had its status changed to 0
+Position 3, 9 inside house 585, 369 had its status changed to 1
+Position 3, 9 inside house 585, 369 had its status changed to 0
+Position 3, 5 inside house 585, 369 had its status changed to 1
+Position 3, 5 inside house 585, 369 had its status changed to 0
+Position 6, 9 inside house 585, 369 had its status changed to 1
+Position 6, 9 inside house 585, 369 had its status changed to 0
+Position 9, 6 inside house 585, 369 had its status changed to 1
+Position 9, 6 inside house 585, 369 had its status changed to 0
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Saving cached file
+RenderTexture's (512 x 512) anti-aliasing changed from 3 to 2 due hardware limitations.
+RenderTexture's (512 x 512) anti-aliasing changed from 3 to 2 due hardware limitations.
+Disconnecting connId=0 to prevent exploits from an Exception in MessageHandler: IndexOutOfRangeException Index was outside the bounds of the array.
+  at Tile.checkIfNeihbourDetailsChanged () [0x00015] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at Tile.refreshForNeighbours () [0x00002] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at Chunk.refreshChunk (System.Boolean fullRefresh) [0x0011a] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at WorldManager.refreshAllChunksInUse (System.Int32 changeXPos, System.Int32 changeYPos, System.Boolean networkRefresh) [0x0012a] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at ChunkUpdateDelay.checkAllAndRefreshTileIfNeeded () [0x00020] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at ChunkUpdateDelay.serverSetUp (System.Boolean waitForOnTile, System.Boolean waitForType, System.Boolean waitForHeight, System.Boolean waitForWater) [0x00029] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at NetworkMapSharer.UserCode_TargetRefreshChunkAfterSent (Mirror.NetworkConnection con, System.Int32 chunkX, System.Int32 chunkY, System.Boolean waitForOnTile, System.Boolean waitForType, System.Boolean waitForHeight, System.Boolean waitForWater) [0x0000c] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at NetworkMapSharer.InvokeUserCode_TargetRefreshChunkAfterSent (Mirror.NetworkBehaviour obj, Mirror.NetworkReader reader, Mirror.NetworkConnectionToClient senderConnection) [0x00045] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at Mirror.RemoteCalls.RemoteCallHelper.InvokeHandlerDelegate (System.Int32 cmdHash, Mirror.MirrorInvokeType invokeType, Mirror.NetworkReader reader, Mirror.NetworkBehaviour invokingType, Mirror.NetworkConnectionToClient senderConnection) [0x00019] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at Mirror.NetworkIdentity.HandleRemoteCall (System.Int32 componentIndex, System.Int32 functionHash, Mirror.MirrorInvokeType invokeType, Mirror.NetworkReader reader, Mirror.NetworkConnectionToClient senderConnection) [0x00069] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at Mirror.NetworkClient.OnRPCMessage (Mirror.RpcMessage message) [0x00020] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at (wrapper delegate-invoke) System.Action`1[Mirror.RpcMessage].invoke_void_T(Mirror.RpcMessage)
+  at Mirror.NetworkClient+<>c__DisplayClass51_0`1[T].<RegisterHandler>g__HandlerWrapped|0 (Mirror.NetworkConnection _, T value) [0x00000] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at Mirror.MessagePacking+<>c__DisplayClass6_0`2[T,C].<WrapHandler>b__0 (Mirror.NetworkConnection conn, Mirror.NetworkReader reader, System.Int32 channelId) [0x0007a] in <6edfdef5cb534c349fa980cc98590311>:0 
+Disconnecting connId=0 to prevent exploits from an Exception in MessageHandler: IndexOutOfRangeException Index was outside the bounds of the array.
+  at Tile.checkIfNeihbourDetailsChanged () [0x00015] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at Tile.refreshForNeighbours () [0x00002] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at Chunk.refreshChunk (System.Boolean fullRefresh) [0x0011a] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at WorldManager.refreshAllChunksInUse (System.Int32 changeXPos, System.Int32 changeYPos, System.Boolean networkRefresh) [0x0012a] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at ChunkUpdateDelay.checkAllAndRefreshTileIfNeeded () [0x00020] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at ChunkUpdateDelay.serverSetUp (System.Boolean waitForOnTile, System.Boolean waitForType, System.Boolean waitForHeight, System.Boolean waitForWater) [0x00029] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at NetworkMapSharer.UserCode_TargetRefreshChunkAfterSent (Mirror.NetworkConnection con, System.Int32 chunkX, System.Int32 chunkY, System.Boolean waitForOnTile, System.Boolean waitForType, System.Boolean waitForHeight, System.Boolean waitForWater) [0x0000c] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at NetworkMapSharer.InvokeUserCode_TargetRefreshChunkAfterSent (Mirror.NetworkBehaviour obj, Mirror.NetworkReader reader, Mirror.NetworkConnectionToClient senderConnection) [0x00045] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at Mirror.RemoteCalls.RemoteCallHelper.InvokeHandlerDelegate (System.Int32 cmdHash, Mirror.MirrorInvokeType invokeType, Mirror.NetworkReader reader, Mirror.NetworkBehaviour invokingType, Mirror.NetworkConnectionToClient senderConnection) [0x00019] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at Mirror.NetworkIdentity.HandleRemoteCall (System.Int32 componentIndex, System.Int32 functionHash, Mirror.MirrorInvokeType invokeType, Mirror.NetworkReader reader, Mirror.NetworkConnectionToClient senderConnection) [0x00069] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at Mirror.NetworkClient.OnRPCMessage (Mirror.RpcMessage message) [0x00020] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at (wrapper delegate-invoke) System.Action`1[Mirror.RpcMessage].invoke_void_T(Mirror.RpcMessage)
+  at Mirror.NetworkClient+<>c__DisplayClass51_0`1[T].<RegisterHandler>g__HandlerWrapped|0 (Mirror.NetworkConnection _, T value) [0x00000] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at Mirror.MessagePacking+<>c__DisplayClass6_0`2[T,C].<WrapHandler>b__0 (Mirror.NetworkConnection conn, Mirror.NetworkReader reader, System.Int32 channelId) [0x0007a] in <6edfdef5cb534c349fa980cc98590311>:0 
+Disconnecting connId=0 to prevent exploits from an Exception in MessageHandler: IndexOutOfRangeException Index was outside the bounds of the array.
+  at Tile.checkIfNeihbourDetailsChanged () [0x00015] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at Tile.refreshForNeighbours () [0x00002] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at Chunk.refreshChunk (System.Boolean fullRefresh) [0x0011a] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at WorldManager.refreshAllChunksInUse (System.Int32 changeXPos, System.Int32 changeYPos, System.Boolean networkRefresh) [0x0012a] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at ChunkUpdateDelay.checkAllAndRefreshTileIfNeeded () [0x00020] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at ChunkUpdateDelay.serverSetUp (System.Boolean waitForOnTile, System.Boolean waitForType, System.Boolean waitForHeight, System.Boolean waitForWater) [0x00029] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at NetworkMapSharer.UserCode_TargetRefreshChunkAfterSent (Mirror.NetworkConnection con, System.Int32 chunkX, System.Int32 chunkY, System.Boolean waitForOnTile, System.Boolean waitForType, System.Boolean waitForHeight, System.Boolean waitForWater) [0x0000c] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at NetworkMapSharer.InvokeUserCode_TargetRefreshChunkAfterSent (Mirror.NetworkBehaviour obj, Mirror.NetworkReader reader, Mirror.NetworkConnectionToClient senderConnection) [0x00045] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at Mirror.RemoteCalls.RemoteCallHelper.InvokeHandlerDelegate (System.Int32 cmdHash, Mirror.MirrorInvokeType invokeType, Mirror.NetworkReader reader, Mirror.NetworkBehaviour invokingType, Mirror.NetworkConnectionToClient senderConnection) [0x00019] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at Mirror.NetworkIdentity.HandleRemoteCall (System.Int32 componentIndex, System.Int32 functionHash, Mirror.MirrorInvokeType invokeType, Mirror.NetworkReader reader, Mirror.NetworkConnectionToClient senderConnection) [0x00069] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at Mirror.NetworkClient.OnRPCMessage (Mirror.RpcMessage message) [0x00020] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at (wrapper delegate-invoke) System.Action`1[Mirror.RpcMessage].invoke_void_T(Mirror.RpcMessage)
+  at Mirror.NetworkClient+<>c__DisplayClass51_0`1[T].<RegisterHandler>g__HandlerWrapped|0 (Mirror.NetworkConnection _, T value) [0x00000] in <6edfdef5cb534c349fa980cc98590311>:0 
+  at Mirror.MessagePacking+<>c__DisplayClass6_0`2[T,C].<WrapHandler>b__0 (Mirror.NetworkConnection conn, Mirror.NetworkReader reader, System.Int32 channelId) [0x0007a] in <6edfdef5cb534c349fa980cc98590311>:0 
+Position 9, 6 inside house 585, 369 had its status changed to 1
+Position 9, 6 inside house 585, 369 had its status changed to 0
+Position 9, 6 inside house 585, 369 had its status changed to 1
+Position 9, 6 inside house 585, 369 had its status changed to 0
+Position 9, 6 inside house 585, 369 had its status changed to 1
+Position 9, 6 inside house 585, 369 had its status changed to 0
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Ckearing compelted here
+Saving cached file
+RenderTexture's (512 x 512) anti-aliasing changed from 3 to 2 due hardware limitations.
+RenderTexture's (512 x 512) anti-aliasing changed from 3 to 2 due hardware limitations.
+Connection was closed by peer, Disconnected by server
+Sending Disconnect message
+Send issue: k_EResultInvalidParam
+Connection to server was lost.
+Transport shut down - was client.
+STEAM - Leaving lobby 109775244296023911
+STEAM - Disconnected
+Disconnected.
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Transform.get_position_Injected(UnityEngine.Transform,UnityEngine.Vector3&)
+  at UnityEngine.Transform.get_position () [0x00000] in <4fae2288737c4dfda349689bbefabfcc>:0 
+  at DailyTaskGenerator+<distanceTracker>d__21.MoveNext () [0x000b3] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) [0x00026] in <4fae2288737c4dfda349689bbefabfcc>:0 
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+ArgumentException: Value does not fall within the expected range.
+  at NetworkMapSharer.OnDestroy () [0x00000] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Light.set_color_Injected(UnityEngine.Light,UnityEngine.Color&)
+  at UnityEngine.Light.set_color (UnityEngine.Color value) [0x00000] in <4fae2288737c4dfda349689bbefabfcc>:0 
+  at RealWorldTimeLight.ChangeSunColor (UnityEngine.Color changeFrom, UnityEngine.Color changeTo, System.Single amount) [0x00041] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+  at RealWorldTimeLight.OnDestroy () [0x000b2] in <e2de8116aa164ccc937ea25a8c664b5f>:0 
+
+UnloadTime: 790.523500 ms
+
+Unloading 26098 unused Assets to reduce memory usage. Loaded Objects now: 210814.
+Total: 475.207000 ms (FindLiveObjects: 35.791200 ms CreateObjectMapping: 20.491700 ms MarkObjects: 225.672800 ms  DeleteObjects: 193.250600 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.239700 ms
+
+Unloading 93 unused Assets to reduce memory usage. Loaded Objects now: 260636.
+Total: 207.351700 ms (FindLiveObjects: 13.412800 ms CreateObjectMapping: 16.899200 ms MarkObjects: 176.387300 ms  DeleteObjects: 0.652100 ms)
+
+FOUND BEPINEX
+FOUND BEPINEX
+FOUND BEPINEX
+FOUND BEPINEX
+STEAM - Leaving lobby 0
+STEAM - Disconnected
+Setting up 6 worker threads for Enlighten.
+  Thread -> id: 19fc -> priority: 1 
+  Thread -> id: 7308 -> priority: 1 
+  Thread -> id: 7a80 -> priority: 1 
+  Thread -> id: 744c -> priority: 1 
+  Thread -> id: 1db4 -> priority: 1 
+  Thread -> id: 1f84 -> priority: 1 
+Coroutine 'cameraStop' couldn't be started because the the game object 'CameraContainer' is inactive!
