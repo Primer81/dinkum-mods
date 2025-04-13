@@ -1,4 +1,10 @@
 ###############################################################################
+# Scripts
+###############################################################################
+SCRIPT_DIR=scripts
+SCRIPT_UPDATE_INI_PY=$(SCRIPT_DIR)/update-ini.py
+
+###############################################################################
 # Common Definitions
 ###############################################################################
 define newline
@@ -14,6 +20,7 @@ read_xml=$(shell python -c "import xml.etree.ElementTree as ET; print(elem.text 
 define zip
     python -c "import shutil; shutil.make_archive('$(if $(2),$(2),$(basename $(1)))', 'zip', '$(1)')"
 endef
+write_ini=python $(SCRIPT_UPDATE_INI_PY) "$(1)" $(2) $(3) $(4)
 lowercase=$(shell echo $(1) | tr A-Z a-z)
 
 ###############################################################################
@@ -59,6 +66,12 @@ export DOTNET_BEPINEX_PACKAGE_NAME?=BepInEx.Templates
 DOTNET_BEPINEX=$(DOTNET) new bepinex5plugin
 DOTNET_BEPINEX_INSTALL_SENTINEL=\
     $(SENTINEL_TMP_DIR)/dotnet-bepinex-install$(SENTINEL_EXT)
+DOTNET_BEPINEX_CONFIG_RELPATH=BepInEx/config/BepInEx.cfg
+
+###############################################################################
+# Dotnet bepinex
+###############################################################################
+DINKUM_BEPINEX_CONFIG_PATH=$(DINKUM_INSTALL)/$(DOTNET_BEPINEX_CONFIG_RELPATH)
 
 ###############################################################################
 # Dotnet ilspycmd

@@ -1,3 +1,6 @@
+###############################################################################
+# Install
+###############################################################################
 .PHONY: dotnet-bepinex-help
 dotnet-bepinex-help: $(DOTNET_BEPINEX_INSTALL_SENTINEL)
 	$(DOTNET_BEPINEX) --help
@@ -26,6 +29,18 @@ dotnet-bepinex-update:
 	$(MAKE) dotnet-bepinex-uninstall
 	$(MAKE) dotnet-bepinex-install
 
-.PHONY: dotnet-bepinex-debug-enable
-dotnet-bepinex-debug-enable:
-	python
+###############################################################################
+# Debug
+###############################################################################
+.PHONY: dotnet-bepinex-debug-all
+dotnet-bepinex-debug-all:
+	$(call write_ini,$(DINKUM_BEPINEX_CONFIG_PATH),Logging.Console,Enabled,true)
+
+.PHONY: dotnet-bepinex-debug-clean
+dotnet-bepinex-debug-clean:
+	$(call write_ini,$(DINKUM_BEPINEX_CONFIG_PATH),Logging.Console,Enabled,false)
+
+.PHONY: dotnet-bepinex-debug-rebuild
+dotnet-bepinex-debug-rebuild:
+	$(MAKE) dotnet-bepinex-debug-clean
+	$(MAKE) dotnet-bepinex-debug-all
