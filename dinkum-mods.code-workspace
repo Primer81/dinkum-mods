@@ -4,21 +4,6 @@
 			"path": "."
 		},
 		{
-			"path": "src/InvertHotbarScroll"
-		},
-		{
-			"path": "src/ToggleSneak"
-		},
-		{
-			"path": "src/UnbindHotKeys"
-		},
-		{
-			"path": "src/DataDumper"
-		},
-		{
-			"path": "src/ToggleMouseControl"
-		},
-		{
 			"path": "references/V.0.9.1/DecompiledSource"
 		}
 	]
