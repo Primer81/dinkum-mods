@@ -2,7 +2,7 @@
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{3750BF44-9B74-4FAB-B9B2-E50D25DBBC87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataDumper", "DataDumper\DataDumper.csproj", "{BAE239CF-3854-4237-8CC6-74EC5EC6ABEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,10 +18,10 @@ Global
 		{A45785B2-46DA-4ECB-9892-18BB39299A21}.Debug|AnyCPU.Build.0 = Debug|AnyCPU
 		{A45785B2-46DA-4ECB-9892-18BB39299A21}.Release|AnyCPU.ActiveCfg = Release|AnyCPU
 		{A45785B2-46DA-4ECB-9892-18BB39299A21}.Release|AnyCPU.Build.0 = Release|AnyCPU
-		{3750BF44-9B74-4FAB-B9B2-E50D25DBBC87}.Debug|AnyCPU.ActiveCfg = Debug|Any CPU
-		{3750BF44-9B74-4FAB-B9B2-E50D25DBBC87}.Debug|AnyCPU.Build.0 = Debug|Any CPU
-		{3750BF44-9B74-4FAB-B9B2-E50D25DBBC87}.Release|AnyCPU.ActiveCfg = Release|Any CPU
-		{3750BF44-9B74-4FAB-B9B2-E50D25DBBC87}.Release|AnyCPU.Build.0 = Release|Any CPU
+		{BAE239CF-3854-4237-8CC6-74EC5EC6ABEF}.Debug|AnyCPU.ActiveCfg = Debug|Any CPU
+		{BAE239CF-3854-4237-8CC6-74EC5EC6ABEF}.Debug|AnyCPU.Build.0 = Debug|Any CPU
+		{BAE239CF-3854-4237-8CC6-74EC5EC6ABEF}.Release|AnyCPU.ActiveCfg = Release|Any CPU
+		{BAE239CF-3854-4237-8CC6-74EC5EC6ABEF}.Release|AnyCPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

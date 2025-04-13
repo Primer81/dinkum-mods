@@ -1,7 +1,7 @@
 {
     "type": "code",
-    "modid": "testproject",
-    "name": "TestProject",
+    "modid": "datadumper",
+    "name": "DataDumper",
     "authors": [
         "Primer81"
     ],
