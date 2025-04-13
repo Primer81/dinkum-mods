@@ -22,6 +22,7 @@ define zip
 endef
 write_ini=python $(SCRIPT_UPDATE_INI_PY) "$(1)" $(2) $(3) $(4)
 lowercase=$(shell echo $(1) | tr A-Z a-z)
+now=$(shell date +%Y%m%dT%H%M%S)
 
 ###############################################################################
 # Images
@@ -35,6 +36,13 @@ IMG_PROFILE_PICTURE=$(IMG_DIR)/Misc/ProfilePicture.png
 SENTINEL_DIR=sentinels
 SENTINEL_TMP_DIR=$(SENTINEL_DIR)/tmp
 SENTINEL_EXT=.sentinel
+
+###############################################################################
+# Backups
+###############################################################################
+BACKUP_TIMESTAMP:=$(call now)
+BACKUP_DIR=backups
+BACKUP_DINKUM=$(BACKUP_DIR)/dinkum/$(BACKUP_TIMESTAMP)
 
 ###############################################################################
 # Dotnet

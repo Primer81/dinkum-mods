@@ -32,15 +32,10 @@ dotnet-bepinex-update:
 ###############################################################################
 # Debug
 ###############################################################################
-.PHONY: dotnet-bepinex-debug-all
-dotnet-bepinex-debug-all:
+.PHONY: dotnet-bepinex-debug-enable
+dotnet-bepinex-debug-enable:
 	$(call write_ini,$(DINKUM_BEPINEX_CONFIG_PATH),Logging.Console,Enabled,true)
 
-.PHONY: dotnet-bepinex-debug-clean
-dotnet-bepinex-debug-clean:
+.PHONY: dotnet-bepinex-debug-disable
+dotnet-bepinex-debug-disable:
 	$(call write_ini,$(DINKUM_BEPINEX_CONFIG_PATH),Logging.Console,Enabled,false)
-
-.PHONY: dotnet-bepinex-debug-rebuild
-dotnet-bepinex-debug-rebuild:
-	$(MAKE) dotnet-bepinex-debug-clean
-	$(MAKE) dotnet-bepinex-debug-all

@@ -1,3 +1,20 @@
+ifndef DINKUM_SAVES
+    ifeq ($(OS),Windows_NT)
+        ifndef APPDATA
+            $(warning APPDATA is undefined. Needed to define DINKUM_SAVES)
+        else
+            export DINKUM_SAVES=$(APPDATA)/../LocalLow/James Bendon/Dinkum
+        endif
+    else
+        ifndef HOME
+            $(warning HOME is undefined. Needed to define DINKUM_SAVES)
+        else
+            export DINKUM_SAVES=$(HOME)/.local/share/Steam/steamapps/compatdata/1062520/pfx/drive_c/users/steamuser/AppData/LocalLow/James Bendon
+        endif
+    endif
+endif
+export DINKUM_SAVES:=$(subst \,/,$(DINKUM_SAVES))
+
 ifndef DINKUM_INSTALL
     ifeq ($(OS),Windows_NT)
         PROGRAMFILES_X86:=$(shell powershell -NoProfile -Command '$${env:ProgramFiles(x86)}')
