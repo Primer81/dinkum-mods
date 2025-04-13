@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "references/V.0.9.1/DecompiledSource"
+		},
+		{
+			"path": "src/DataDumper"
 		}
 	]
 }
